@@ -24,11 +24,22 @@ export class Listarprodutos {
     this.carregarProdutos();
   }
 
-  carregarProdutos(): void{
+  carregarProdutos(): void {
     this.produtosService.buscarTodos().subscribe(retorno => {
       this.listaProdutos = retorno;
       this.cd.detectChanges();
     });
+  }
+
+  deletar(produto: IProduto): void {
+    this.produtosService.excluir(produto.id!).subscribe(() => {
+      this.produtosService.exibirMensagem(
+        'SISTEMA',
+        `${produto.nome} foi excluido com sucesso!`,
+        'toast-error'
+      );
+      this.carregarProdutos();
+    })
   }
 
 }
