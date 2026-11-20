@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { Home } from './components/home/home';
 import { Listarprodutos } from './components/produtos/listarprodutos/listarprodutos';
 import { Cadastrarproduto } from './components/produtos/cadastrarproduto/cadastrarproduto';
+import { AtualizarProduto } from './components/produtos/atualizar-produto/atualizar-produto';
 
 const routes: Routes = [
   {path: '', component:Home},
   {path: 'produtos', component:Listarprodutos},
-  {path: 'produtos/cadastrar', component:Cadastrarproduto}
+  {path: 'produtos/cadastrar', component:Cadastrarproduto},
+  {path: 'produtos/atualizar/:id', component:AtualizarProduto}
 ];
 
 @NgModule({

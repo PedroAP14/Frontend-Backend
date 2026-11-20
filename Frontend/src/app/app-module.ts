@@ -14,6 +14,9 @@ import { registerLocaleData } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared-module';
 import { provideHttpClient } from '@angular/common/http';
+import { provideToastr } from 'ngx-toastr';
+import { AtualizarProduto } from './components/produtos/atualizar-produto/atualizar-produto';
+import { provideSweetAlert2, SwalComponent, SwalDirective } from '@sweetalert2/ngx-sweetalert2';
 registerLocaleData(localePt);
 
 
@@ -24,18 +27,26 @@ registerLocaleData(localePt);
     Footer,
     Home,
     Listarprodutos,
-    Cadastrarproduto
+    Cadastrarproduto,
+    AtualizarProduto
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    SwalComponent,
+    SwalDirective
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    {provide: LOCALE_ID, useValue: 'pt-BR'},
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
     provideHttpClient(),
+    provideToastr(),
+    provideSweetAlert2({
+      fireOnInit: false,
+      dismissOnDestroy: true,
+    }),
   ],
   bootstrap: [App]
 })

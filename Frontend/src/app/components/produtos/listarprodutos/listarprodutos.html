@@ -25,10 +25,17 @@
                 <td>{{ prod.validade | date: 'shortDate' }}</td>
                 <td>{{ prod.precoproduto| currency: 'BRL' }}</td>
                 <td>
-                    <button class="btn btn-warning btn-sm">
+                    <button class="btn btn-warning btn-sm" routerLink="/produtos/atualizar/{{prod.id}}">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <button class="btn btn-danger btn-sm ms-2">
+                    <button class="btn btn-danger btn-sm ms-2" [swal]="{
+                        title: 'ATENÇÃO',
+                        text: 'Deseja realmente excluir o produto: ' + prod.nome + '?',
+                        showDenyButton: true,
+                        denyButtonText: 'Não',
+                        confirmButtonText: 'Sim, excluir',
+                        icon: 'warning'
+                    }">
                         <i class="fas fa-trash"></i>
                     </button>
                 </td>
